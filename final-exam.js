@@ -42,7 +42,7 @@ function fillTable(){
 
         col.innerText = product.name;
         col2.innerText = product.price;
-        num.innerText= 0.0;
+        num.innerText= 0;
         button.innerText = '+';
 
        
@@ -57,20 +57,39 @@ function fillTable(){
 
 function add(){
     var num = document.getElementById("num");
-    
-    num.innerText += 1;
+    //num.innerText += 1;
+
+    var intNum = parseInt(num.innerText);
+    intNum ++;
+
+    num.innerText = intNum;
 }
 
 //var button = document.getElementsByClassName("plus-btn");
 
 function total(){
-    var nums = document.getElementsByClassName("num");
-    document.write(JSON.stringify(nums));
-    /*
-    var total = 0;
-    nums.forEach(num => {
+    var num = document.getElementById("num");
+    var total = num.innerText;
+
+    /*var cont = nums.length;
+
+    while (cont > 0){
+
+        num= nums[cont];
+        document.write(num);
+        num = num.innerText;
+        num = parseInt(num);
+        total = total + num;
+        cont = cont -1;
+    };*/
+
+
+    alert("Your total is" + total );
+
+    /*nums.forEach(num => {
 
         total = total + num.innerText;
+        alert("Your total is");
 
     })*/
     
