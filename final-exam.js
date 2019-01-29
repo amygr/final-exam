@@ -5,6 +5,9 @@ var products = [ {name: "foundation", price: 34.50},
 
 ];
 
+
+var last = 5; 
+
 function shop(){
 
     document.write("juju");
@@ -14,7 +17,8 @@ function fillTable(){
 
 
     var table = document.getElementById("grid");
-    
+    var cont = 0;
+
     products.forEach(product => {
 
         var row = document.createElement('div');
@@ -30,6 +34,7 @@ function fillTable(){
         col2.className = "col-sm";
         col3.className = "col-sm";
         button.className = "plus-btn";
+        button.id= cont;
         num.id = "num";
         num.className = "num";
 
@@ -44,11 +49,11 @@ function fillTable(){
         col2.innerText = product.price;
         num.innerText= 0;
         button.innerText = '+';
+        cont ++;
+
 
        
         button.addEventListener("click", add);
-        //button.onclick = add();
-        //document.write(JSON.stringify(products));
  
     });
 }
@@ -56,8 +61,9 @@ function fillTable(){
 
 
 function add(){
-    var num = document.getElementById("num");
-    //num.innerText += 1;
+    var nums = document.getElementsByClassName("num");
+    var num = nums[this.id]
+    console.log(num);
 
     var intNum = parseInt(num.innerText);
     intNum ++;
@@ -65,32 +71,27 @@ function add(){
     num.innerText = intNum;
 }
 
-//var button = document.getElementsByClassName("plus-btn");
-
 function total(){
-    var num = document.getElementById("num");
-    var total = num.innerText;
 
-    /*var cont = nums.length;
+    
+    var nums = document.getElementsByClassName("num");
+    console.log(nums);
+    var total = 0;
+    var cont = nums.length -1;
 
-    while (cont > 0){
-
+    while (cont >= 0){
+        console.log("while");
         num= nums[cont];
-        document.write(num);
-        num = num.innerText;
-        num = parseInt(num);
-        total = total + num;
+        num = parseInt(num.innerText);
+        console.log(num);
+        total = total + num*products[cont].price;
+        console.log(products[cont].price);
+        console.log(total);
         cont = cont -1;
-    };*/
+    };
 
 
-    alert("Your total is" + total );
+    alert("Your total is $" + total);
 
-    /*nums.forEach(num => {
-
-        total = total + num.innerText;
-        alert("Your total is");
-
-    })*/
     
 }
